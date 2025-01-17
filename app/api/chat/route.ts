@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { BotService } from '@/services/botservice'
 
-export async function POST(req: NextRequest) {
+export async function POST(req: NextRequest): Promise<NextResponse> {
   try {
     const body = await req.json()
     const { message } = body
