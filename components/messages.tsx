@@ -1,7 +1,7 @@
 import { Avatar, AvatarFallback } from './ui/avatar'
 
 type MessageProps = {
-  id: string
+  item_key: string
   content: string
   author: string
 }
@@ -11,7 +11,7 @@ export default function Messages({ data }: { data: MessagesProps }) {
   return (
     <>
       {data.map(message => (
-        <div key={message.id} className='whitespace-pre-wrap md:mr-12'>
+        <div key={message.item_key} className='whitespace-pre-wrap md:mr-12'>
           <Message message={message} />
         </div>
       ))}

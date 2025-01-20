@@ -1,0 +1,29 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Message {
+  id                String   @id @default(uuid())   // Unique identifier for each record
+  created_at        DateTime @default(now())        // Timestamp for when the record was created
+  user_input        String                            // The user's message
+  bot_response      String                            // The bot's response
+  user_name         String                            // The user's name
+  conversation_id   String                            // Groups messages into conversations
+  user_input_time   DateTime                         // Timestamp for when the user sent their message
+  bot_response_time DateTime                        // Timestamp for when the bot responded
+}
+
+
+
+
