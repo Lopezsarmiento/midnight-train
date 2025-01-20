@@ -1,5 +1,6 @@
 import { BotService } from '@/services/botservice'
 import * as utils from '@/utils'
+import { randomResponses } from '@/data/responses'
 
 jest.mock('@/utils', () => ({
   getRandomIndex: jest.fn()
@@ -33,19 +34,15 @@ describe('BotService', () => {
     getRandomIndexMock.mockReturnValue(0)
 
     const response = BotService.getResponse('What is your name?')
-    expect(response).toBe("Wow that's interesting! Tell me more.")
-    expect(getRandomIndexMock).toHaveBeenCalledWith(
-      BotService['responses'].length
-    )
+    expect(response).toBe(randomResponses[0])
+    expect(getRandomIndexMock).toHaveBeenCalledWith(randomResponses.length)
   })
 
   it('should return another random response when index changes', () => {
     getRandomIndexMock.mockReturnValue(3)
 
     const response = BotService.getResponse('Tell me something interesting.')
-    expect(response).toBe('Hmm, let me think...')
-    expect(getRandomIndexMock).toHaveBeenCalledWith(
-      BotService['responses'].length
-    )
+    expect(response).toBe(randomResponses[3])
+    expect(getRandomIndexMock).toHaveBeenCalledWith(randomResponses.length)
   })
 })
