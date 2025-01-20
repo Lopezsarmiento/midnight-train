@@ -4,7 +4,7 @@ import prisma from '@/lib/prisma' // Prisma client
 export async function GET(): Promise<NextResponse> {
   try {
     const messages = await prisma.message.findMany({
-      orderBy: { createdAt: 'asc' }
+      orderBy: { created_at: 'asc' }
     })
 
     return NextResponse.json({ messages })
